@@ -376,3 +376,60 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         
         modified:   templates/app/home/inc/daily-best-sells.html
         6. Render/loop the home_ad_daylies instances to homepage
+
+
+#### 08. Deal of the Day
+
+        modified:   README.md
+        modified:   app/home/models.py
+        1. Create model like this:
+        class HomeAdDealTime(models.Model):
+        # Defining Supplier Status
+        class Supplier(models.TextChoices):        
+        SALEM = 'Salem', 'Salem'        
+        PIZZA = 'Pizza', 'Pizza'
+        HAMBURGER = 'Hamburger', 'Hamburger'
+        DUNNER = 'Dunner', 'Dunner'
+
+        image = models.ImageField(upload_to='images/deal_time', 
+        default='deal_time_ad.png',
+        help_text='Please use our recommended dimensions: 568px x 503px, 250 KB MAX')
+        title = models.CharField(max_length=120)
+        supplier = models.CharField(max_length=50,choices=Supplier.choices,default=Supplier.SALEM)
+        supplier_url = models.CharField(max_length=400)
+        price = models.DecimalField(max_digits=100, decimal_places=2, default='00')
+        discount = models.DecimalField(max_digits=100, decimal_places=2, default='00')
+        deal_time = models.DateTimeField(default=timezone.now)
+
+        new file:   app/home/migrations/0008_homeaddealtime.py
+        new file:   app/home/migrations/0009_alter_homeaddealtime_deal_time.py
+        new file:   app/home/migrations/0010_alter_homeaddealtime_supplier.py
+        2. Run and apply migratons
+
+        modified:   app/home/admin.py
+        3. Register model to admin
+
+        modified:   app/home/views.py
+        4. Define logic in the home_page view, like this:
+        # VIEWS: home
+        def home_page(request):
+        ...
+        home_ad_deal_times = HomeAdDealTime.objects.all()
+        context = {
+        ..
+        'home_ad_deal_times':home_ad_deal_times,
+
+        modified:   templates/app/home/inc/deals-of-the-day.html
+        5. Render / loop home_ad_deal_times, in homepage like this:
+        {% for ad in home_ad_deal_times %}
+        <div class="col-xl-3 col-lg-4 col-md-6">
+        ...
+        <img src="{{ad.image.url}}" alt="" />
+        ...
+        <h2><a href="shop-product-right.html">{{ad.title}}</a></h2>
+        ...
+        <span>${{ad.discount}}</span>
+        <span class="old-price">${{ad.price}}</span>
+        ...
+        </div>
+        {% endfor %}

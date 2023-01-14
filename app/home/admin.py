@@ -4,10 +4,14 @@
 from django.contrib import admin
 
 # Import from locals
-from app.home.models import Carousel, Subscribe, HeadTextAd, HomeAdDayly
+from app.home.models import (
+	Carousel, Subscribe, 
+	HeadTextAd, HomeAdDayly,
+	HomeAdDealTime)
 
 # Registering site
 admin.site.register(Carousel)
 admin.site.register(Subscribe)
 admin.site.register(HeadTextAd)
 admin.site.register(HomeAdDayly)
+admin.site.register(HomeAdDealTime)

@@ -2,6 +2,7 @@
 
 # Import django modules
 from django.db import models
+from django.utils import timezone
 
 
 # MODEL:Carousel
@@ -28,7 +29,7 @@ class HeadTextAd(models.Model):
 # MODEL:HomeAdDayly
 class HomeAdDayly(models.Model):
 
-	# Defining Blog Status
+	# Defining Position Status
 	class Position(models.TextChoices):        
 		LEFT = 'L', 'Left'        
 		RIGHT = 'R', 'Right'
@@ -41,3 +42,26 @@ class HomeAdDayly(models.Model):
 
 	class Meta:        
 		verbose_name_plural='Home Ad Dayly'
+
+
+# MODEL:HomeAdDealTime
+class HomeAdDealTime(models.Model):
+
+	# Defining Supplier Status
+	class Supplier(models.TextChoices):        
+		SALEM = 'Salem', 'Salem'        
+		PIZZA = 'Pizza', 'Pizza'
+		HAMBURGER = 'Hamburger', 'Hamburger'
+		DUNNER = 'Dunner', 'Dunner'
+
+	image = models.ImageField(upload_to='images/deal_time', 
+			default='deal_time_ad.png',
+			help_text='Please use our recommended dimensions: 568px x 503px, 250 KB MAX')
+	title = models.CharField(max_length=120)
+	supplier = models.CharField(max_length=50,choices=Supplier.choices,default=Supplier.SALEM)
+	supplier_url = models.CharField(max_length=400)
+	price = models.DecimalField(max_digits=100, decimal_places=2, default='00')
+	discount = models.DecimalField(max_digits=100, decimal_places=2, default='00')
+	deal_time = models.DateTimeField(default=timezone.now)
+
+

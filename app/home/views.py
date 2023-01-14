@@ -4,7 +4,7 @@
 from django.shortcuts import render
 
 # Import from locals
-from app.home.models import Carousel, HeadTextAd, HomeAdDayly
+from app.home.models import Carousel, HeadTextAd, HomeAdDayly, HomeAdDealTime
 from app.home.forms import SubscribeForm
 
 # VIEWS: home
@@ -13,6 +13,8 @@ def home_page(request):
 	# print(carousels)
 	head_text_ads = HeadTextAd.objects.all()
 	home_ad_daylies = HomeAdDayly.objects.all()
+	home_ad_deal_times = HomeAdDealTime.objects.all()
+
 	# Subscription
 	subscribe_form = SubscribeForm()
 	subscribe_successfull = None
@@ -30,5 +32,6 @@ def home_page(request):
 		'subscribe_successfull':subscribe_successfull,
 		'head_text_ads':head_text_ads,
 		'home_ad_daylies':home_ad_daylies,
+		'home_ad_deal_times':home_ad_deal_times,
 	}
 	return render(request, 'app/home/index.html', context)
