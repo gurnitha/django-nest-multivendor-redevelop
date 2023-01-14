@@ -181,3 +181,23 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         Bypass password validation and create user anyway? [y/N]: y
         Superuser created successfully.
 
+
+#### 04. Rendering Carousels
+
+        modified:   README.md
+        modified:   app/home/views.py
+        1. Get all carousels instance
+        modified:   config/settings.py
+        2. Setup media files 
+        modified:   config/urls.py
+        3. Add path for media files and static files
+        new file:   images/carousel/slider-1.png
+        new file:   images/carousel/slider-2.png
+        new file:   media/images/carousel/slider-1.png
+        new file:   media/images/carousel/slider-2.png
+        modified:   templates/app/home/inc/slider-hero.html
+        4. Load/loop slider instance 
+
+        NOTE: Carousel title is too long, cant break it using <br>
+
+        NEXT: Create title in two field (first_part, second_part)

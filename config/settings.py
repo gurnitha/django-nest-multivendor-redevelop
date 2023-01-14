@@ -125,6 +125,11 @@ STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS = [
     'config/static'
 ]
+
+# Media files (images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Define static file dir
 STATIC_FILE_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Default primary key field type
