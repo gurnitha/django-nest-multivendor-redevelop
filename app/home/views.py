@@ -6,7 +6,8 @@ from django.shortcuts import render
 # Import from locals
 from app.home.models import (
 	Carousel, HeadTextAd, HomeAdDayly, 
-	HomeAdDealTime, HomeAdMiddleBanner)
+	HomeAdDealTime, HomeAdMiddleBanner,
+	HomeAdSupplier)
 from app.home.forms import SubscribeForm
 
 # VIEWS: home
@@ -17,6 +18,7 @@ def home_page(request):
 	home_ad_daylies = HomeAdDayly.objects.all()
 	home_ad_deal_times = HomeAdDealTime.objects.all()
 	home_ad_mid_banners = HomeAdMiddleBanner.objects.all()
+	home_ad_suppliers = HomeAdSupplier.objects.all()
 
 	# Subscription
 	subscribe_form = SubscribeForm()
@@ -37,5 +39,6 @@ def home_page(request):
 		'home_ad_daylies':home_ad_daylies,
 		'home_ad_deal_times':home_ad_deal_times,
 		'home_ad_mid_banners':home_ad_mid_banners,
+		'home_ad_suppliers':home_ad_suppliers,
 	}
 	return render(request, 'app/home/index.html', context)

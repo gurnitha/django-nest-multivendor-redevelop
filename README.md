@@ -435,7 +435,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         {% endfor %}
 
 
-#### 09. Home Ad Middle Banner
+#### 09. Home Ads Middle Banner
 
         modified:   README.md
         modified:   app/home/models.py
@@ -470,3 +470,16 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
 
         modified:   templates/app/home/inc/banner.html
         5. Render home_ad_mid_banners instances to homepage
+
+
+#### 10. Home Ads Suppliers
+
+        modified:   README.md
+        modified:   app/home/admin.py
+        new file:   app/home/migrations/0013_homeadsupplier.py
+        modified:   app/home/models.py
+        modified:   app/home/views.py
+        new file:   templates/app/home/inc/ads_supplier.html
+        modified:   templates/app/home/index.html
+
+        NOTE: Activities similar to 09.

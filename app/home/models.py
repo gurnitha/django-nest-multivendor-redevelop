@@ -81,3 +81,21 @@ class HomeAdMiddleBanner(models.Model):
 	title_second_part = models.CharField(max_length=50, blank=True)
 	ad_url = models.CharField(max_length=400)
 	image_position = models.CharField(max_length=10,choices=ImagePosition.choices,default=ImagePosition.LEFT)
+
+
+# MODEL:HomeAdMiddleBanner
+class HomeAdSupplier(models.Model):
+
+	# Defining Position Status
+	class ImagePosition(models.TextChoices):        
+		LEFT = 'L', 'Left'        
+		RIGHT = 'R', 'Right'
+		MIDDLE = 'M', 'Middle'
+
+	image = models.ImageField(upload_to='images/ads_supplier', 
+			default='middle_banner.png',
+			help_text='Please use our recommended dimensions: 756px x 332px, 250 KB MAX')
+	title_first_part = models.CharField(max_length=50)
+	title_second_part = models.CharField(max_length=50, blank=True)
+	supplier_url = models.CharField(max_length=400)
+	image_position = models.CharField(max_length=10,choices=ImagePosition.choices,default=ImagePosition.LEFT)

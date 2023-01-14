@@ -1,0 +1,23 @@
+{% load static %}
+
+{% block content %}
+        <section class="section-padding">
+            <div class="container">
+                <div class="row">
+                	{% for ad in home_ad_suppliers%}
+                	<!-- banner card -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="banner-img style-6 wow animate__ animate__fadeInUp animated" data-wow-delay="0" style="visibility: visible; animation-name: fadeInUp;">
+                            <img src="{{ad.image.url}}" alt="">
+                            <div class="banner-text">
+                                <h6 class="mb-10 mt-30">{{ad.title_first_part}}<br>{{ad.title_second_part}}</h6>
+                                <p>Go to supplier</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- banner card -->
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+{% endblock content %}
