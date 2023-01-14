@@ -87,3 +87,12 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         4. Include the home's urls.py 
         new file:   templates/app/home/index.html
         5. Create templates/home and index.html
+
+
+#### 03.3 Add html template to homepage
+
+        Activities:
+
+        modified:   README.md
+        modified:   templates/app/home/index.html
+        1. Adding html template
