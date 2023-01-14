@@ -116,3 +116,14 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         3. Loading static files ie:
         	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
         	url({% static 'assets/imgs/banner/popup-1.png' %})"
+
+
+#### 03.5 Templates inheritance - Part 1: Creating base template 
+
+        Activities:
+
+        modified:   README.md
+        modified:   templates/app/home/index.html
+        1. Fixing tiny error of loading static file
+        new file:   templates/base.html
+        2. Creating base.html template and extends it to index.html
