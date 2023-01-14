@@ -96,3 +96,23 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         modified:   README.md
         modified:   templates/app/home/index.html
         1. Adding html template
+
+
+#### 03.4 Adding and loading static files
+
+        Activities:
+
+        modified:   README.md
+        modified:   config/settings.py
+        1. Activated django templates:'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        2. Setting up static files path:
+	        # New: Setup static files
+	        STATIC_URL = '/static/'
+	        STATIC_ROOT = BASE_DIR /'static'
+	        STATICFILES_DIRS = [
+	        	'config/static'
+	        ]
+        modified:   templates/app/home/index.html
+        3. Loading static files ie:
+        	<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+        	url({% static 'assets/imgs/banner/popup-1.png' %})"
