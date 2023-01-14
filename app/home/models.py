@@ -18,8 +18,26 @@ class Subscribe(models.Model):
 	date  = models.DateTimeField(auto_now=True)
 
 
-# MODEL:Haead_text_ads
+# MODEL:HeadTextAd
 class HeadTextAd(models.Model):
 	title = models.CharField(max_length=100)
 	ad_url = models.CharField(max_length=400)
 	date  = models.DateTimeField(auto_now=True)
+
+
+# MODEL:HomeAdDayly
+class HomeAdDayly(models.Model):
+
+	# Defining Blog Status
+	class Position(models.TextChoices):        
+		LEFT = 'L', 'Left'        
+		RIGHT = 'R', 'Right'
+
+	image = models.ImageField(upload_to='images/daily_ad', default='daily_ad.png')
+	title = models.CharField(max_length=100)
+	ad_url = models.CharField(max_length=400)
+	# Adding a position field
+	position = models.CharField(max_length=5,choices=Position.choices,default=Position.LEFT)
+
+	class Meta:        
+		verbose_name_plural='Home Ad Dayly'

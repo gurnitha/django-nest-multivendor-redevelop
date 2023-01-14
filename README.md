@@ -326,3 +326,53 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         5. Render head_text_ads to header_top
 
         NEXT: Home Ads Daily
+
+
+#### 07. Home Ad Dayly
+
+        modified:   README.md
+        
+        modified:   app/home/models.py
+        1. Define HomeAdDayly model, like this:
+        # MODEL:HomeAdDayly
+        class HomeAdDayly(models.Model):
+
+        # Defining Blog Status
+        class Position(models.TextChoices):        
+        LEFT = 'L', 'Left'        
+        RIGHT = 'R', 'Right'
+
+        image = models.ImageField(upload_to='images/daily_ad', default='daily_ad.png')
+        title = models.CharField(max_length=100)
+        ad_url = models.CharField(max_length=400)
+        # Adding a position field
+        position = models.CharField(max_length=5,choices=Position.choices,default=Position.LEFT)
+
+        class Meta:        
+        verbose_name_plural='Home Ad Dayly'
+        
+        new file:   app/home/migrations/0007_homeaddayly.py
+        2. Run and apply migrations
+
+        modified:   app/home/admin.py
+        3. Register the model to admin
+
+        modified:   app/home/views.py
+        4. Define in home_page view method, like this:
+        # VIEWS: home
+        def home_page(request):
+        ..
+        home_ad_daylies = HomeAdDayly.objects.all()
+        ...
+
+        ...
+
+        context = {
+        ...
+        'home_ad_daylies':home_ad_daylies,
+        }
+        new file:   media/images/daily_ad/banner-4.png
+        5. Add ads from admin panel
+        
+        modified:   templates/app/home/inc/daily-best-sells.html
+        6. Render/loop the home_ad_daylies instances to homepage
