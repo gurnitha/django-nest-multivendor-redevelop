@@ -166,3 +166,18 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         2. Run adn apply migrations
         modified:   app/home/admin.py
         3. Register Carousel model to admin
+
+
+#### 04. Creating superuser
+
+        (venv3941) λ python manage.py createsuperuser
+        Username (leave blank to use 'hp'): admin
+        Email address: admin@admin.com
+        Password: admin
+        Password (again): admin
+        The password is too similar to the username.
+        This password is too short. It must contain at least 8 characters.
+        This password is too common.
+        Bypass password validation and create user anyway? [y/N]: y
+        Superuser created successfully.
+
