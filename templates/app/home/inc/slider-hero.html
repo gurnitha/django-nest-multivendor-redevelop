@@ -16,10 +16,15 @@
                                     {{carousel.title_second_part}}
                                 </h1>
                                 <p class="mb-65">Sign up for the daily newsletter</p>
-                                <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Your emaill address" />
+                                <form method="post" class="form-subcriber d-flex">
+                                    {% csrf_token %}
+                                    {{subscribe_form}}
+                                    
                                     <button class="btn" type="submit">Subscribe</button>
                                 </form>
+                                {% if subscribe_successfull %}
+                                    <br><p>Subscribed successfully!</p>
+                                {% endif %}
                             </div>
                         </div>
                         {% endfor %}

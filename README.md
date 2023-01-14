@@ -218,3 +218,76 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         4. Render the carousel to homepage
 
         NEXT: Subscribe
+
+
+#### 06. Subscribe 
+
+        modified:   app/home/models.py
+        1. Define Subscribe model, like this:
+        class Subscribe(models.Model):
+        email = models.EmailField(max_length=100)
+        date  = models.DateTimeField(auto_now=True)
+        new file:   app/home/migrations/0003_subscribe.py
+        2. Run and apply migrations
+        new file:   app/home/forms.py
+        3. Create SubscribeForm form model, like this:
+        from django import forms
+        from django.utils.translation import gettext_lazy as _
+
+        # Import from locals
+        from app.home.models import Subscribe
+
+        class SubscribeForm(forms.ModelForm):
+        class Meta:
+        model=Subscribe
+        fields='__all__'
+        labels = {'email':_('')}
+
+        def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs['placeholder'] = 'Enter your email'
+        modified:   app/home/admin.py
+        4. Register Subscribe model to admin
+        modified:   app/home/views.py
+        5. Define logic in home_page view method, like this:
+        # Import django modules
+        from django.shortcuts import render
+
+        # Import from locals
+        from app.home.models import Carousel
+        from app.home.forms import SubscribeForm
+
+        # VIEWS: home
+        def home_page(request):
+        carousels = Carousel.objects.all()
+        # print(carousels)
+        # Subscription
+        subscribe_form = SubscribeForm()
+        subscribe_successfull = None
+
+        if request.POST:
+        subscribe_form = SubscribeForm(request.POST)
+        if subscribe_form.is_valid():
+        subscribe_form.save()
+        subscribe_successfull = 'Subscribed successfully.'
+        subscribe_form = SubscribeForm()
+
+        context = {
+        'carousels':carousels,
+        'subscribe_form':subscribe_form,
+        'subscribe_successfull':subscribe_successfull
+        }
+        return render(request, 'app/home/index.html', context)
+        modified:   templates/app/home/inc/slider-hero.html
+        6. Render subscribe_form to homepage, like this:
+        <form method="post" class="form-subcriber d-flex">
+        {% csrf_token %}
+        {{subscribe_form}}
+
+        <button class="btn" type="submit">Subscribe</button>
+        </form>
+        {% if subscribe_successfull %}
+        <br><p>Subscribed successfully!</p>
+        {% endif %}
+
+        NOTE: It worked, saved the subscriber data to db:)
