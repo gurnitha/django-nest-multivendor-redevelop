@@ -2,17 +2,18 @@
 
 {% block content %}
 
+
         <section class="home-slider position-relative mb-30">
             <div class="container">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
                         {% for carousel in carousels %}
-                        <!-- slider -->
                         <div class="single-hero-slider single-animation-wrap" 
                             style="background-image: url({{carousel.image.url}})">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40">
-                                    {{carousel.title}}
+                                    {{carousel.title_first_part}}<br>
+                                    {{carousel.title_second_part}}
                                 </h1>
                                 <p class="mb-65">Sign up for the daily newsletter</p>
                                 <form class="form-subcriber d-flex">
@@ -21,11 +22,13 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- slider end -->
                         {% endfor %}
+                    </div>
                     <div class="slider-arrow hero-slider-1-arrow"></div>
                 </div>
             </div>
         </section>
+
+
 
 {% endblock content %}

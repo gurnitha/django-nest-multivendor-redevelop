@@ -201,3 +201,20 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         NOTE: Carousel title is too long, cant break it using <br>
 
         NEXT: Create title in two field (first_part, second_part)
+
+
+#### 05. Rendering Carousels with 2 title fields
+
+        modified:   app/home/models.py
+        1. Modified the Carousel model with this:
+        title_first_part = models.CharField(max_length=20)
+        title_second_part = models.CharField(max_length=30)
+        new file:   app/home/migrations/0002_remove_carousel_title_carousel_title_first_part_and_more.py
+        2. Run and apply migrations
+        modified:   app/home/views.py
+        3. Comment this part:
+        # print(carousels)
+        modified:   templates/app/home/inc/slider-hero.html
+        4. Render the carousel to homepage
+
+        NEXT: Subscribe
