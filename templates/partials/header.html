@@ -1,0 +1,27 @@
+{% load static %}
+
+{% block content %}
+
+    <header class="header-area header-style-1 header-height-2">
+        <div class="mobile-promotion">
+            <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
+        </div>
+
+        <!--===================== Header top =====================-->
+        {% include './header-top.html' %}
+        <!--===================== Header top =====================-->
+
+        <!--======================== Header logo ========================-->
+        {% include './header-logo.html' %}
+        <!--======================== Header logo ========================-->
+
+        <!--======================= Header nav-bar =======================-->
+        {% include './header-nav-bar.html' %}
+        <!--======================= Header nav-bar =======================-->
+    </header>
+
+    <!--======================== Header nav-mobile ========================-->
+        {% include './header-nav-mobile.html' %}
+    <!--======================== Header nav-mobile ========================-->
+
+{% endblock content %}

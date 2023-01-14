@@ -127,3 +127,24 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         1. Fixing tiny error of loading static file
         new file:   templates/base.html
         2. Creating base.html template and extends it to index.html
+
+
+#### 03.6 Templates inheritance - Part 2: Partials and Include  
+
+        new file:   templates/app/home/inc/banner.html
+        new file:   templates/app/home/inc/daily-best-sells.html
+        new file:   templates/app/home/inc/deals-of-the-day.html
+        new file:   templates/app/home/inc/featured-categories.html
+        new file:   templates/app/home/inc/popular-products.html
+        new file:   templates/app/home/inc/slider-hero.html
+        new file:   templates/app/home/inc/top-selling.html
+        modified:   templates/app/home/index.html
+        modified:   templates/base.html
+        new file:   templates/partials/footer.html
+        new file:   templates/partials/header-logo.html
+        new file:   templates/partials/header-nav-bar.html
+        new file:   templates/partials/header-nav-mobile.html
+        new file:   templates/partials/header-top.html
+        new file:   templates/partials/header.html
+        new file:   templates/partials/modal.html
+        new file:   templates/partials/quick-view.html
