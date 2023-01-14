@@ -291,3 +291,38 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         {% endif %}
 
         NOTE: It worked, saved the subscriber data to db:)
+
+
+#### 07. Creating Head Text for Adds
+
+        modified:   README.md
+        modified:   app/home/models.py
+        1. Creating HeadTextAd model, like this:
+        # MODEL:Haead_text_ads
+        class HeadTextAd(models.Model):
+        title = models.CharField(max_length=100)
+        ad_url = models.CharField(max_length=400)
+        date  = models.DateTimeField(auto_now=True)
+        new file:   app/home/migrations/0004_haead_text_ads.py
+        2. Run and  apply migrations
+        modified:   app/home/admin.py
+        3. Register HeadTextAd model to admin
+        modified:   app/home/views.py
+        4. Define logic in home_page view method, like this:
+        # VIEWS: home
+        def home_page(request):
+        ..
+        head_text_ads = HeadTextAd.objects.all()
+        ...
+
+        ...
+
+        context = {
+        ...
+        'head_text_ads':head_text_ads,
+        }
+        return render(request, 'app/home/index.html', context)
+        modified:   templates/partials/header-top.html
+        5. Render head_text_ads to header_top
+
+        NEXT: Home Ads Daily

@@ -16,3 +16,10 @@ class Carousel(models.Model):
 class Subscribe(models.Model):
 	email = models.EmailField(max_length=100)
 	date  = models.DateTimeField(auto_now=True)
+
+
+# MODEL:Haead_text_ads
+class HeadTextAd(models.Model):
+	title = models.CharField(max_length=100)
+	ad_url = models.CharField(max_length=400)
+	date  = models.DateTimeField(auto_now=True)

@@ -4,13 +4,14 @@
 from django.shortcuts import render
 
 # Import from locals
-from app.home.models import Carousel
+from app.home.models import Carousel, HeadTextAd
 from app.home.forms import SubscribeForm
 
 # VIEWS: home
 def home_page(request):
 	carousels = Carousel.objects.all()
 	# print(carousels)
+	head_text_ads = HeadTextAd.objects.all()
 	# Subscription
 	subscribe_form = SubscribeForm()
 	subscribe_successfull = None
@@ -25,6 +26,7 @@ def home_page(request):
 	context = {
 		'carousels':carousels,
 		'subscribe_form':subscribe_form,
-		'subscribe_successfull':subscribe_successfull
+		'subscribe_successfull':subscribe_successfull,
+		'head_text_ads':head_text_ads,
 	}
 	return render(request, 'app/home/index.html', context)
