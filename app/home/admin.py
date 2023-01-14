@@ -7,7 +7,7 @@ from django.contrib import admin
 from app.home.models import (
 	Carousel, Subscribe, 
 	HeadTextAd, HomeAdDayly,
-	HomeAdDealTime)
+	HomeAdDealTime, HomeAdMiddleBanner)
 
 # Registering site
 admin.site.register(Carousel)
@@ -15,3 +15,4 @@ admin.site.register(Subscribe)
 admin.site.register(HeadTextAd)
 admin.site.register(HomeAdDayly)
 admin.site.register(HomeAdDealTime)
+admin.site.register(HomeAdMiddleBanner)

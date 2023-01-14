@@ -433,3 +433,40 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         ...
         </div>
         {% endfor %}
+
+
+#### 09. Home Ad Middle Banner
+
+        modified:   README.md
+        modified:   app/home/models.py
+        1. Create HomeAdMiddleBanner model like this:
+        class HomeAdMiddleBanner(models.Model):
+
+        # Defining Position Status
+        class ImagePosition(models.TextChoices):        
+        LEFT = 'L', 'Left'        
+        RIGHT = 'R', 'Right'
+        MIDDLE = 'M', 'Middle'
+
+        image = models.ImageField(upload_to='images/middle_banner', 
+        default='middle_banner.png',
+        help_text='Please use our recommended dimensions: 768px x 450px, 250 KB MAX')
+        title_first_part = models.CharField(max_length=50)
+        title_second_part = models.CharField(max_length=50, blank=True)
+        ad_url = models.CharField(max_length=400)
+        image_position = models.CharField(max_length=10,choices=ImagePosition.choices,default=ImagePosition.LEFT)
+
+        2. Run and apply migrations
+
+        modified:   app/home/admin.py
+        3. Register model to admin
+
+        modified:   app/home/views.py
+        4. Define logic in home_page view, like this:
+        def home_page(request):
+        home_ad_mid_banners = HomeAdMiddleBanner.objects.all()
+        context = {
+        'home_ad_mid_banners':home_ad_mid_banners,}
+
+        modified:   templates/app/home/inc/banner.html
+        5. Render home_ad_mid_banners instances to homepage
