@@ -68,3 +68,22 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         3. Register the app to config
         4. Run the server
 
+
+## 03. Building The Homepage
+
+
+#### 03.1 Create homepage
+
+        Activities:		
+
+        modified:   README.md
+        new file:   app/home/urls.py
+        1. Create urls.py file and define the home path
+        modified:   app/home/views.py
+        2. Define home_page method
+        modified:   config/settings.py
+        3. Activate django template and import os
+        modified:   config/urls.py
+        4. Include the home's urls.py 
+        new file:   templates/app/home/index.html
+        5. Create templates/home and index.html
