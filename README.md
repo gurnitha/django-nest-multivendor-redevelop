@@ -148,3 +148,21 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         new file:   templates/partials/header.html
         new file:   templates/partials/modal.html
         new file:   templates/partials/quick-view.html
+
+
+#### 03. Create Carousel model
+
+        Activities:
+
+        modified:   app/home/models.py  
+        1. Create Carousel model:
+        # MODEL:
+        class Carousel(models.Model):
+        image = models.ImageField(upload_to='images/carousel', default='carousel.png')
+        title = models.CharField(max_length=200)
+        car_url = models.CharField(max_length=200)
+
+        new file:   app/home/migrations/0001_initial.py
+        2. Run adn apply migrations
+        modified:   app/home/admin.py
+        3. Register Carousel model to admin
