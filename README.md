@@ -89,7 +89,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         5. Create templates/home and index.html
 
 
-#### 03.3 Add html template to homepage
+#### 03.2 Add html template to homepage
 
         Activities:
 
@@ -98,7 +98,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         1. Adding html template
 
 
-#### 03.4 Adding and loading static files
+#### 03.3 Adding and loading static files
 
         Activities:
 
@@ -118,7 +118,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         	url({% static 'assets/imgs/banner/popup-1.png' %})"
 
 
-#### 03.5 Templates inheritance - Part 1: Creating base template 
+#### 03.4 Templates inheritance - Part 1: Creating base template 
 
         Activities:
 
@@ -129,7 +129,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         2. Creating base.html template and extends it to index.html
 
 
-#### 03.6 Templates inheritance - Part 2: Partials and Include  
+#### 03.5 Templates inheritance - Part 2: Partials and Include  
 
         new file:   templates/app/home/inc/banner.html
         new file:   templates/app/home/inc/daily-best-sells.html
@@ -150,7 +150,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         new file:   templates/partials/quick-view.html
 
 
-#### 03. Create Carousel model
+#### 03.6 Create Carousel model
 
         Activities:
 
@@ -168,7 +168,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         3. Register Carousel model to admin
 
 
-#### 04. Creating superuser
+#### 03.7 Creating superuser
 
         (venv3941) λ python manage.py createsuperuser
         Username (leave blank to use 'hp'): admin
@@ -182,7 +182,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         Superuser created successfully.
 
 
-#### 04. Rendering Carousels
+#### 03.8 Rendering Carousels
 
         modified:   README.md
         modified:   app/home/views.py
@@ -203,7 +203,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         NEXT: Create title in two field (first_part, second_part)
 
 
-#### 05. Rendering Carousels with 2 title fields
+#### 03.9 Rendering Carousels with 2 title fields
 
         modified:   app/home/models.py
         1. Modified the Carousel model with this:
@@ -220,7 +220,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         NEXT: Subscribe
 
 
-#### 06. Subscribe 
+#### 03.10 Subscribe 
 
         modified:   app/home/models.py
         1. Define Subscribe model, like this:
@@ -293,7 +293,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         NOTE: It worked, saved the subscriber data to db:)
 
 
-#### 07. Creating Head Text for Adds
+#### 03.11 Creating Head Text for Adds
 
         modified:   README.md
         modified:   app/home/models.py
@@ -328,7 +328,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         NEXT: Home Ads Daily
 
 
-#### 07. Home Ad Dayly
+#### 03.12 Home Ad Dayly
 
         modified:   README.md
         
@@ -378,7 +378,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         6. Render/loop the home_ad_daylies instances to homepage
 
 
-#### 08. Deal of the Day
+#### 03.13 Deal of the Day
 
         modified:   README.md
         modified:   app/home/models.py
@@ -435,7 +435,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         {% endfor %}
 
 
-#### 09. Home Ads Middle Banner
+#### 03.14 Home Ads Middle Banner
 
         modified:   README.md
         modified:   app/home/models.py
@@ -472,7 +472,7 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         5. Render home_ad_mid_banners instances to homepage
 
 
-#### 10. Home Ads Suppliers
+#### 03.15 Home Ads Suppliers
 
         modified:   README.md
         modified:   app/home/admin.py
@@ -483,3 +483,6 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         modified:   templates/app/home/index.html
 
         NOTE: Activities similar to 09.
+
+
+#### Modified readme file
