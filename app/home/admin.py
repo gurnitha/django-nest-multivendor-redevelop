@@ -9,7 +9,7 @@ from app.home.models import (
 	HeadTextAd, HomeAdDayly,
 	HomeAdDealTime, HomeAdMiddleBanner,
 	HomeAdSupplier, SuperCategory,
-	MainCategory, SubCategory)
+	MainCategory, SubCategory, MiniCategory)
 
 # Registering site
 admin.site.register(Carousel)
@@ -42,6 +42,15 @@ class MainCategoryAdmin(admin.ModelAdmin):
 @admin.register(SubCategory)
 class SubCategoryAdmin(admin.ModelAdmin):    
 	list_display = ['name', 'slug', 'image_tag', 'super_category', 'main_category']
+	list_filter = ['name',]    
+	search_fields = ['name']    
+	prepopulated_fields = {'slug': ('name',)}    
+	ordering = ['created',]
+
+
+@admin.register(MiniCategory)
+class MiniCategoryAdmin(admin.ModelAdmin):    
+	list_display = ['name', 'slug', 'image_tag', 'super_category', 'main_category', 'sub_category']
 	list_filter = ['name',]    
 	search_fields = ['name']    
 	prepopulated_fields = {'slug': ('name',)}    

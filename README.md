@@ -694,3 +694,56 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
                 ordering = ['created',]
         5. Create sub category from admin panel
         new file:   media/images/category/sub/singkong.PNG
+
+
+#### 04.4 Creating mini category
+
+        Aktivities:
+
+        1. Modified 
+        modified:   README.md
+
+        2. Create MiniCategory
+        modified:   app/home/models.py
+
+        # MODEL:MiniCategory
+        class MiniCategory(models.Model):
+                super_category = models.ForeignKey(SuperCategory, on_delete=models.CASCADE, related_name='super_in_mini')
+                main_category = models.ForeignKey(MainCategory, on_delete=models.CASCADE, related_name='main_in_mini')
+                sub_category = models.ForeignKey(MainCategory, on_delete=models.CASCADE, related_name='sub_in_mini')
+                name = models.CharField(max_length=50)
+                image = models.ImageField(upload_to='images/category/mini/', 
+                                        default='super_category.png',
+                                        help_text='Please use our recommended dimensions: 120px X 120px')
+                slug = models.SlugField(max_length=250, unique=True)
+                created = models.DateTimeField(auto_now_add=True)
+                updated = models.DateTimeField(auto_now=True)
+
+                class Meta:
+                        verbose_name_plural = 'Categories mini'
+
+                # Showing product image in admin panel
+                def image_tag(self):
+                        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+                image_tag.short_description = 'Image'
+
+                def __str__(self):
+                        return self.name
+
+        3. Run and apply migrations
+        new file:   app/home/migrations/0017_minicategory.py
+
+        4. Register model
+        modified:   app/home/admin.py
+
+        @admin.register(MiniCategory)
+        class MiniCategoryAdmin(admin.ModelAdmin):    
+                list_display = ['name', 'slug', 'image_tag', 'super_category', 'main_category', 'sub_category']
+                list_filter = ['name',]    
+                search_fields = ['name']    
+                prepopulated_fields = {'slug': ('name',)}    
+                ordering = ['created',]
+
+        5. Create mini category from admin panel
+        new file:   media/images/category/mini/sayur-singkong.PNG

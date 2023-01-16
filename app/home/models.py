@@ -171,3 +171,28 @@ class SubCategory(models.Model):
 
 	def __str__(self):
 		return self.name
+
+# MODEL:MiniCategory
+class MiniCategory(models.Model):
+	super_category = models.ForeignKey(SuperCategory, on_delete=models.CASCADE, related_name='super_in_mini')
+	main_category = models.ForeignKey(MainCategory, on_delete=models.CASCADE, related_name='main_in_mini')
+	sub_category = models.ForeignKey(MainCategory, on_delete=models.CASCADE, related_name='sub_in_mini')
+	name = models.CharField(max_length=50)
+	image = models.ImageField(upload_to='images/category/mini/', 
+				default='super_category.png',
+				help_text='Please use our recommended dimensions: 120px X 120px')
+	slug = models.SlugField(max_length=250, unique=True)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		verbose_name_plural = 'Categories mini'
+
+	# Showing product image in admin panel
+	def image_tag(self):
+		return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+	image_tag.short_description = 'Image'
+
+	def __str__(self):
+		return self.name
