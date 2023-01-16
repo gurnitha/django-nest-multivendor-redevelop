@@ -486,3 +486,49 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
 
 
 #### Modified readme file
+
+
+#### 03.16 Subscribe in the footer
+
+        Aktivities:
+
+        1. Modified 
+        modified:   README.md
+        
+        2. Render
+        modified:   templates/partials/footer.html
+
+        -------
+        # MODEL:Subscribe
+        class Subscribe(models.Model):
+                email = models.EmailField(max_length=100)
+                date  = models.DateTimeField(auto_now=True)
+        -------
+        # app/home/forms.py
+
+        # Import django modules
+        from django import forms
+        from django.utils.translation import gettext_lazy as _
+
+        # Import from locals
+        from app.home.models import Subscribe
+
+        class SubscribeForm(forms.ModelForm):
+            class Meta:
+                model=Subscribe
+                fields='__all__'
+                labels = {'email':_('')}
+            
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                self.fields['email'].widget.attrs['placeholder'] = 'Enter your email'        
+        ------
+        <form method="post" class="form-subcriber d-flex">
+            {% csrf_token %}
+            {{subscribe_form}}
+            <!-- <input type="email" placeholder="Your emaill address" /> -->
+            <button class="btn" type="submit">Subscribe</button>
+        </form>
+        {% if subscribe_successfull %}
+            <br><p>Subscribed successfully!</p>
+        {% endif %}

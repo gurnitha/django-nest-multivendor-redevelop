@@ -14,10 +14,15 @@
                                     needs from our shop
                                 </h2>
                                 <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Nest Mart</span></p>
-                                <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Your emaill address" />
+                                <form method="post" class="form-subcriber d-flex">
+                                    {% csrf_token %}
+                                    {{subscribe_form}}
+                                    <!-- <input type="email" placeholder="Your emaill address" /> -->
                                     <button class="btn" type="submit">Subscribe</button>
                                 </form>
+                                {% if subscribe_successfull %}
+                                    <br><p>Subscribed successfully!</p>
+                                {% endif %}
                             </div>
                             <img src="{% static 'assets/imgs/banner/banner-9.png' %}" alt="newsletter" />
                         </div>
