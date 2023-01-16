@@ -532,3 +532,63 @@ Github link: https://github.com/gurnitha/django-nest-multivendor-redevelop
         {% if subscribe_successfull %}
             <br><p>Subscribed successfully!</p>
         {% endif %}
+
+
+## 04. Categories
+
+
+#### 04.1 Creating super category
+
+        Aktivities:
+
+        1. Modified 
+        modified:   README.md
+
+        2. Create SuperCategory model
+        modified:   app/home/models.py
+
+        from django.utils.safestring import mark_safe
+
+        # MODEL:SuperCategory
+        class SuperCategory(models.Model):
+        name = models.CharField(max_length=50)
+        image = models.ImageField(upload_to='images/category/super/', 
+                                default='super_category.png',
+                                help_text='Please use our recommended dimensions: 120px X 120px')
+        slug = models.SlugField(max_length=250, unique=True)
+        created = models.DateTimeField(auto_now_add=True)
+        updated = models.DateTimeField(auto_now=True)
+
+        class Meta:
+                verbose_name_plural = 'Categories super'
+
+        # Showing product image in admin panel
+        def image_tag(self):
+                return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+        image_tag.short_description = 'Image'
+
+        def __str__(self):
+                return self.title
+
+        3. Run and apply migrations
+        new file:   app/home/migrations/0014_supercategory.py
+
+        4. Register the model to admin
+        modified:   app/home/admin.py
+
+        # Import from locals
+        from app.home.models import SuperCategory
+
+        @admin.register(SuperCategory)
+        class SuperCategoryAdmin(admin.ModelAdmin):    
+                list_display = ['name', 'slug', 'image_tag']
+                list_filter = ['name',]    
+                search_fields = ['name']    
+                prepopulated_fields = {'slug': ('name',)}    
+                ordering = ['created',]
+
+        5. Create super category from admin panel
+        new file:   media/images/category/super/cat-1.png
+
+        DONE:)

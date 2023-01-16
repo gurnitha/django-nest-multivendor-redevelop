@@ -8,7 +8,7 @@ from app.home.models import (
 	Carousel, Subscribe, 
 	HeadTextAd, HomeAdDayly,
 	HomeAdDealTime, HomeAdMiddleBanner,
-	HomeAdSupplier)
+	HomeAdSupplier, SuperCategory)
 
 # Registering site
 admin.site.register(Carousel)
@@ -18,3 +18,12 @@ admin.site.register(HomeAdDayly)
 admin.site.register(HomeAdDealTime)
 admin.site.register(HomeAdMiddleBanner)
 admin.site.register(HomeAdSupplier)
+
+
+@admin.register(SuperCategory)
+class SuperCategoryAdmin(admin.ModelAdmin):    
+	list_display = ['name', 'slug', 'image_tag']
+	list_filter = ['name',]    
+	search_fields = ['name']    
+	prepopulated_fields = {'slug': ('name',)}    
+	ordering = ['created',]

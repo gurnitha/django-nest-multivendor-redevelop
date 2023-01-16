@@ -3,6 +3,7 @@
 # Import django modules
 from django.db import models
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 
 
 # MODEL:Carousel
@@ -99,3 +100,26 @@ class HomeAdSupplier(models.Model):
 	title_second_part = models.CharField(max_length=50, blank=True)
 	supplier_url = models.CharField(max_length=400)
 	image_position = models.CharField(max_length=10,choices=ImagePosition.choices,default=ImagePosition.LEFT)
+
+
+# MODEL:SuperCategory
+class SuperCategory(models.Model):
+	name = models.CharField(max_length=50)
+	image = models.ImageField(upload_to='images/category/super/', 
+				default='super_category.png',
+				help_text='Please use our recommended dimensions: 120px X 120px')
+	slug = models.SlugField(max_length=250, unique=True)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		verbose_name_plural = 'Categories super'
+
+	# Showing product image in admin panel
+	def image_tag(self):
+		return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+
+	image_tag.short_description = 'Image'
+
+	def __str__(self):
+		return self.title
